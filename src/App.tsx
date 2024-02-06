@@ -23,13 +23,8 @@ function App() {
           <ThemeProvider theme={theme === 'light' ? light : dark}>
             <GlobalStyle />
             <Container>
-              <h1>Vite + React</h1>
-              <div className="card">
-                <button onClick={changeTheme}>theme is {theme}</button>
-                <p>
-                  Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-              </div>
+              <button onClick={changeTheme}>Cuttent theme is {theme}</button>
+              <h1>Here will be my Portfolio 2.0 🛠️</h1>
             </Container>
           </ThemeProvider>
         </ThemeContext.Provider>
@@ -42,8 +37,12 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: ${(props) => props.theme.palette.secondary.main};
+  font-size: 10em;
 `;
 
 export default App;
