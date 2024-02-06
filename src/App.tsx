@@ -1,19 +1,20 @@
 import { useState } from 'react';
-import { ThemeProvider, styled } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 
 import { light, dark } from './theme';
 import { ThemeContext } from './stores/context';
 import GlobalStyle from './style/GlobalStyle';
+import Routing from './routing/routing';
 
 function App() {
-  const [theme, setThme] = useState('light');
+  const [theme, setTheme] = useState('light');
 
   const changeTheme = () => {
     if (theme === 'light') {
-      setThme('dark');
+      setTheme('dark');
     } else {
-      setThme('light');
+      setTheme('light');
     }
   };
   return (
@@ -22,27 +23,12 @@ function App() {
         <ThemeContext.Provider value={{ theme: theme, changeTheme: changeTheme }}>
           <ThemeProvider theme={theme === 'light' ? light : dark}>
             <GlobalStyle />
-            <Container>
-              <button onClick={changeTheme}>Cuttent theme is {theme}</button>
-              <h1>Here will be my Portfolio 2.0 🛠️</h1>
-            </Container>
+            <Routing />
           </ThemeProvider>
         </ThemeContext.Provider>
       </BrowserRouter>
     </>
   );
 }
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props) => props.theme.palette.secondary.main};
-  font-size: 10em;
-`;
 
 export default App;
