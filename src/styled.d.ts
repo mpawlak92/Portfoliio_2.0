@@ -1,6 +1,8 @@
 import 'styled-components';
 interface Palette {
   main: string;
+  text: string;
+  background: string;
 }
 declare module 'styled-components' {
   export interface DefaultTheme {
