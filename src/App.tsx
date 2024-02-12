@@ -8,9 +8,9 @@ import GlobalStyle from './style/GlobalStyle';
 import Routing from './routing/routing';
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
-  const changeTheme = () => {
+  const toggleTheme = () => {
     if (theme === 'light') {
       setTheme('dark');
     } else {
@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <BrowserRouter basename={import.meta.env.DEV ? '/' : '/Portfolio_2.0'}>
-        <ThemeContext.Provider value={{ theme: theme, changeTheme: changeTheme }}>
+        <ThemeContext.Provider value={{ theme: theme, changeTheme: toggleTheme }}>
           <ThemeProvider theme={theme === 'light' ? light : dark}>
             <GlobalStyle />
             <Routing />
