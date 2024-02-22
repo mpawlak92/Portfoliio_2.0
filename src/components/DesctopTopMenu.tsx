@@ -1,5 +1,5 @@
 import { NavLink as BaseNavLink } from 'react-router-dom';
-import { ThemeContext } from '../stores/context';
+import { ThemeContext } from '../stores/theme-context';
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import Switch from './Switch';

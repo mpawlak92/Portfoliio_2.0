@@ -3,12 +3,12 @@ import { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 
 import { light, dark } from './theme';
-import { ThemeContext } from './stores/context';
 import GlobalStyle from './style/GlobalStyle';
 import Routing from './routing/routing';
+import { ThemeContext } from './stores/theme-context';
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   const toggleTheme = () => {
     if (theme === 'light') {
