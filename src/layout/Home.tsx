@@ -83,8 +83,8 @@ const MyImg = styled.img<MyImgProps>`
   max-inline-size: 100%;
   max-block-size: 80%;
   object-fit: contain;
-  border: 2px solid blue;
   border-radius: 25px;
+  box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.3);
   opacity: ${(props) => (props.$propmouse ? 0 : 1)};
   transition: opacity 0.5s linear;
   z-index: 2;
@@ -102,8 +102,8 @@ const MyDescription = styled.div`
   padding: 20px;
   text-indent: 20px;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 2px solid blue;
   border-radius: 25px;
+  box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.3);
   opacity: 0;
   transition: opacity 2s ease 0.3s;
   z-index: 1;
