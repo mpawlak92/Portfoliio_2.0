@@ -1,7 +1,10 @@
-import { NavLink as BaseNavLink } from 'react-router-dom';
-import { ThemeContext } from '../stores/theme-context';
-import { useContext, useState } from 'react';
 import styled from 'styled-components';
+import { useContext, useState } from 'react';
+import { NavLink as BaseNavLink } from 'react-router-dom';
+import {Link as SLink} from 'react-scroll'
+
+import { ThemeContext } from '../stores/theme-context';
+
 import Switch from './Switch';
 
 const DesctopTopMenu = () => {
@@ -17,6 +20,38 @@ const DesctopTopMenu = () => {
 
   return (
     <Container>
+      <NavContent>
+      <ScrollLink activeClass="active"
+      to="Home" 
+      spy={true} 
+      smooth={true} 
+      offset={0} 
+      duration={800}
+      isDynamic={true}
+      >
+        Home
+      </ScrollLink>
+      <ScrollLink activeClass="active"
+      to="s1"
+      spy={true} 
+      smooth={true} 
+      offset={0} 
+      duration={800}
+      isDynamic={true} 
+      >
+        Section 1
+      </ScrollLink>
+      <ScrollLink activeClass="active"
+      to="s2"
+      spy={true} 
+      smooth={true} 
+      offset={0} 
+      duration={800}
+      isDynamic={true}
+      >
+        Section 2
+      </ScrollLink>
+      <NavLink to="/portfolio">Portfolio</NavLink>
       <div>
         <Switch
           currnetState={themeState}
@@ -27,25 +62,48 @@ const DesctopTopMenu = () => {
           scale={0.95}
         />
       </div>
-      <NavLink to="/temp">Portfolio</NavLink>
+      </NavContent>
     </Container>
+    
   );
 };
 
-const Container = styled.div`
-  position: absolute;
+const Container = styled.nav`
+  position: fixed;
   top: 0;
-  block-size: 50px;
-  inline-size: 100vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  block-size: 70px;
+  inline-size: 100%;
   padding-inline: 15px;
+  background-color: rgba(0,0,0, 0.7);
 `;
-const NavLink = styled(BaseNavLink)`
+const NavContent = styled.div`
+  width: 100%;
+  height: 100%;
+  block-size: 70px;
+  inline-size: 100%;
   padding-inline: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 1px solid white;
+`
+const NavLink = styled(BaseNavLink)`
+  padding-inline: 25px;
   font-size: 20px;
-  color: ${(props) => props.theme.palette.primary.text};
+  color: ${(props) => props.theme.palette.common.white};
   text-decoration: none;
 `;
+const ScrollLink = styled(SLink)`
+  padding-inline:5px;
+  margin-inline: 25px;
+  font-size: 20px;  
+  color: ${(props) => props.theme.palette.common.white};
+  text-decoration: none;
+  &.active{
+    font-weight: bold;
+    border-bottom: 1px solid ${(props) => props.theme.palette.common.white};
+  
+  }
+`
 export default DesctopTopMenu;

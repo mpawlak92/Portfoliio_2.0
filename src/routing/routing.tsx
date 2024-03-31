@@ -8,7 +8,7 @@ const Routing = () => {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/temp" element={<PortfolioPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
       </Routes>
     </>
   );

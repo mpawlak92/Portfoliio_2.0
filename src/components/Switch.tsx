@@ -50,7 +50,7 @@ const Slider = styled.div<{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${(props) => (props.$isChecked ? '#2196F3' : '#ccc')};
+  background-color: ${(props) => (props.$isChecked ? '#0d8cb7' : '#ccc')};
   transition: 0.4s;
   border-radius: ${(props) => 34 * props.$scale}px;
 
