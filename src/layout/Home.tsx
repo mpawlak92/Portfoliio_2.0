@@ -1,25 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { keyframes, styled } from 'styled-components';
-import homeBg from '../assets/home_bg_4k_transparent.webp';
+import heroBgLight from '../assets/hero_bg_light.jpg';
+import heroBgDark from '../assets/hero_bg_dark.jpg';
 import myPhoto from '../assets/PageOwner.jpg';
 import DesctopTopMenu from '../components/DesctopTopMenu';
+import { ThemeContext } from '../stores/theme-context';
 
 const HomePage = () => {
   const [imgShowDelayStyle, setImgShowDelayStyle] = useState('hidden');
   const [hovered, setHovered] = useState<boolean>(false);
   const [stardedAnimationEnd, setStartedAnimationEnd] = useState(false);
 
+  const { theme } = useContext(ThemeContext);
+
+  const bgImg = theme === 'light' ? 'url(${heroBgLight})': 'url(${heroBgLight})' 
+
   useEffect(() => {
     setTimeout(() => {
       setImgShowDelayStyle('visible');
       setTimeout(() => {
         setStartedAnimationEnd(true);
+        
       }, 500);
     }, 500);
   }, []);
 
   return (
-    <Container>
+    <Container $mode={theme}>
       <DesctopTopMenu />
       <MyImg
         src={myPhoto}
@@ -39,7 +46,16 @@ const HomePage = () => {
     </Container>
   );
 };
-const Container = styled.div`
+
+interface MyImgProps {
+  $imgshowdelaystyle: string;
+  $propmouse?: boolean;
+}
+interface ContainerProps {
+  $mode: string;
+}
+
+const Container = styled.div<ContainerProps>`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -50,7 +66,7 @@ const Container = styled.div`
   padding-inline: 15px;
   padding-block-start: 50px;
   background-color: ${(props) => props.theme.palette.primary.background};
-  background-image: url(${homeBg});
+  background-image: ${(props) => props.$mode === 'light' ? `url(${heroBgLight})` : `url(${heroBgDark})`};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -73,10 +89,6 @@ const fadeIn = keyframes`
    
   }
 `;
-interface MyImgProps {
-  $imgshowdelaystyle: string;
-  $propmouse?: boolean;
-}
 
 const MyImg = styled.img<MyImgProps>`
   visibility: ${(props) => props.$imgshowdelaystyle};
