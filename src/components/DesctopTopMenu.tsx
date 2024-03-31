@@ -32,14 +32,14 @@ const DesctopTopMenu = () => {
         Home
       </ScrollLink>
       <ScrollLink activeClass="active"
-      to="s1"
+      to="aboutme"
       spy={true} 
       smooth={true} 
       offset={0} 
       duration={800}
       isDynamic={true} 
       >
-        Section 1
+        About me
       </ScrollLink>
       <ScrollLink activeClass="active"
       to="s2"
@@ -75,6 +75,7 @@ const Container = styled.nav`
   inline-size: 100%;
   padding-inline: 15px;
   background-color: rgba(0,0,0, 0.7);
+  z-index:11;
 `;
 const NavContent = styled.div`
   width: 100%;
